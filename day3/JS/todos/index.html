@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center">TODO</h2>
+      <div class="mb-3">
+        <input type="text" id="inputTodo" placeholder="Enter a todo" />
+
+        <button class="btn btn-primary" onclick="addtask()" id="enterTodo">
+          Enter Todo
+        </button>
+        <button class="btn btn-primary" onclick="onClickGet()" id="getTodo">
+          Get Todo
+        </button>
+      </div>
+    </div>
+
+    <script src="todos.js"></script>
+    <script>
+      function addtask() {
+        const task = document.querySelector("#inputtodo");
+        addTodo({ id: Date.now(), task: task.value, completed: false });
+        alert("todo added");
+      }
+      function display() {
+        const array = getAllTodo();
+        let data = "";
+        for (let t of array) {
+          data += `<li>${t.task}${t.completed ? completed : pending}</li>
+          <button>`;
+        }
+        document.getElementById("todos").innerHTML = data;
+      }
+      function updateTodo(id) {
+        completeTodo(id);
+        display();
+      }
+      function removeTodo(id) {
+        removeTodo(id);
+        display();
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

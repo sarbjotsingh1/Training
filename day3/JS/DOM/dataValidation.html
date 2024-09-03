@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form method="post" onsubmit="handleSubmit(event)" novalidate>
+      <input type="email" placeholder="email" id="email" />
+      <spam id="emailerror"></spam> <br />
+      <br />
+      <input type="password" placeholder="password" id="password" />
+      <spam id="passworderror"></spam> <br />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      function handleSubmit() {
+        const regexemail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+        const regexpassword= /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+        event.preventDefault();
+        const email = document.querySelector("#email").value;
+        const password = document.querySelector("#password").value;
+        if (email == "") {
+          const emailerror = document.getElementById("emailerror");
+          emailerror.textContent = "Enter email";
+          emailerror.style.color = "red";
+        } else if (!regexemail.test(email)) {
+          emailerror.textContent = "Enter valid email";
+          emailerror.style.color = "red";
+        } else if (password == ""){
+            const passworderror = document.querySelector("$passworderror");
+        }
+        else if (!regexpassword.test(password)) {
+          passworderror.textContent = "Enter valid Password";
+          passworderror.style.color = "red";
+        }
+        else {
+          alert("form submitted");
+        }
+      }
+    </script>
+  </body>
+</html>

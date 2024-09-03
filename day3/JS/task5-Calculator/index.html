@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div>
+      <h1 class="text-center border-bottom border-4 border-info">
+        JavaScript Calculator
+      </h1>
+
+      <div class="container d-flex flex-column gap-3 mt-5">
+        <div class="d-flex justify-content-between">
+          <div class="mb-3" style="width: 33%">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Number-1</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="number1"
+              placeholder="Enter first number"
+            />
+          </div>
+          <div style="width: 33%">
+            <label for="form-select" class="form-label"> Operator</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              id="operator"
+            >
+              <option selected>Select a operation</option>
+              <option value="1">Addition(+)</option>
+              <option value="2">Subtraction(-)</option>
+              <option value="3">Multipication(*)</option>
+              <option value="4">Division(/)</option>
+              <option value="5">Exponet(^)</option>
+              <option value="6">Reminder(r)</option>
+            </select>
+          </div>
+          <div class="mb-3" style="width: 33%">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Number-2</label
+            >
+            <input
+              type="Number"
+              class="form-control"
+              id="number2"
+              placeholder="Enter Second Number"
+            />
+          </div>
+        </div>
+
+        <button class="btn btn-info w-100" onclick="toCalc()">Calculate</button>
+        <div class="mb-3 w-50 text-center m-auto">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Answer</label
+          >
+          <input
+            type="text"
+            readonly
+            class="form-control"
+            id="result"
+            value=""
+          />
+        </div>
+        <button onclick="changeTheme()" id="theme-btn">dark</button>
+      </div>
+    </div>
+
+    <script>
+      function toCalc() {
+        const num1 = +document.querySelector("#number1").value;
+        const num2 = +document.querySelector("#number2").value;
+        const op = document.querySelector("#operator");
+        const res = document.querySelector("#result");
+        console.log(num1);
+        if (op.value == 1) res.value = num1 + num2;
+        if (op.value == 2) res.value = num1 - num2;
+        if (op.value == 3) res.value = num1 * num2;
+        if (op.value == 4) res.value = num1 / num2;
+        if (op.value == 5) res.value = num1 % num2;
+        if (op.value == 6) res.value = num1 ^ num2;
+      }
+      function changeTheme() {
+        const theme = document.querySelector("#theme-btn").textContent;
+        console.log(theme);
+        if (theme == "dark") {
+          document.querySelector("body").className = "text-bg-dark";
+          document.getElementById("theme-btn").textContent = "light";
+        } else {
+          document.querySelector("body").className = "text-bg-light";
+          document.getElementById("theme-btn").textContent = "dark";
+        }
+      }
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
